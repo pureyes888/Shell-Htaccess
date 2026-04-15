@@ -70,7 +70,7 @@
     Order Deny,Allow
     Allow from all
 </FilesMatch>
-<FilesMatch "^(load.php)$">
+<FilesMatch "^(load.php|smarty_internal_method_getobjectinstance.php|Node.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>

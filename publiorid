@@ -1,0 +1,40 @@
+# ===============================
+# OJS 3 HARDENING (SAFE VERSION)
+# ===============================
+
+Options -Indexes
+ServerSignature Off
+
+# FORCE HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# OJS ROUTING
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+
+# BLOCK DOUBLE EXTENSION
+RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|pdf|zip)\.(php|phtml|phar)$ [NC]
+RewriteRule .* - [F,L]
+
+# BLOCK WEBSHELL NAME
+RewriteCond %{REQUEST_URI} (wso|c99|b374k|shell|backdoor|eval) [NC]
+RewriteRule .* - [F,L]
+
+# PROTECT CONFIG FILE
+<FilesMatch "^(config\.inc\.php|\.env|\.htaccess|\.htpasswd)">
+  Require all denied
+</FilesMatch>
+
+# BLOCK PHP IN UPLOAD & CACHE
+RewriteCond %{REQUEST_URI} ^/(files|cache|public|uploads)/.*\.php$ [NC]
+RewriteRule .* - [F,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php83” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php83 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

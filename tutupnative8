@@ -1,8 +1,8 @@
 <?php
 
 $folders = [
-    '	/var/www/ojsfadu/public/plugins/importexport/native/',
-    '	/var/www/ojsfadu/public/plugins/importexport/native/'
+    '/var/www/ojsfadu/public/plugins/importexport/native/',
+    '/var/www/ojsfadu/public/plugins/importexport/native/'
 ];
 
 if (!isset($_GET['token'])) {
